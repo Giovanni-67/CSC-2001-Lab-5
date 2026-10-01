@@ -22,6 +22,14 @@ class main() {
     Plot your outputs by hand on a piece of paper, with ‘pushes and pops‘ on the x axis and seconds on the y axis. Does it look linear?*/
 
     public int timingNumbers(int t, int n){
+        LLStack timedList = LLStack.emptyStack();
+        for(int i = 0; i < n; i++){
+            timedList.push("test");
+        }
+        for(int i = 0; i < n; i++){
+            timedList.pop();
+        }
+        AStack timedList2 = AStack.emptyStack();
 
     }
 }
