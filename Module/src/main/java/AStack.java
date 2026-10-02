@@ -18,7 +18,7 @@ public class AStack {
     public void push(String newData){
         if(size >= data.length){
             String[] biggerData = new String[data.length*2];
-            for(int i = 0; i < biggerData.length; i++){
+            for(int i = 0; i < data.length; i++){
                 biggerData[i] = data[i];
             }
             data = biggerData;

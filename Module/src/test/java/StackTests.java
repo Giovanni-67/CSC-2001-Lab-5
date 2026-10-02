@@ -2,7 +2,7 @@ import org.junit.jupiter.api.Test;
 import java.util.NoSuchElementException;
 import static org.junit.jupiter.api.Assertions.*;
 
-class main {
+class StackTests {
     /*Along with your standard testing, let’s do some timing. Here’s a short piece of Java code that measures the time it takes to run a function ‘f‘:
 
     long startTime = System.nanoTime();
@@ -39,15 +39,13 @@ class main {
 
             long endTime = System.nanoTime();
             long duration = ((endTime - startTime) / 1000000);  //divide by 1000000 to get milliseconds.
-            System.out.println("calling array f took "+duration+" milliseconds.\n");
+            //System.out.println("calling array f took "+duration+" milliseconds.\n");
 
             if(duration > t){
                 System.out.println(n/2);
                 break;
             }
-            else{
-                n *= 2;
-            }
+            n *= 2;
         }
     }
 
@@ -67,7 +65,7 @@ class main {
 
             long endTime = System.nanoTime();
             long duration = ((endTime - startTime) / 1000000);  //divide by 1000000 to get milliseconds.
-            System.out.println("calling linkedlist f took "+duration+" milliseconds.\n");
+            //System.out.println("calling linkedlist f took "+duration+" milliseconds.\n");
 
             if(duration > t){
                 System.out.println(n/2);
@@ -152,5 +150,16 @@ class main {
         assertEquals(second.pop(), "World");
     }
 
+    void main(){
+        timingArrayNumbers(700);
+        timingLListNumbers(700);
+        //100: Array 2097152, List 524288
+        //200: Array 4194304, List 2097152
+        //300: Array 4194304, List 4194304
+        //400: Array 16777216, List 8388608
+        //500: Array 16777216, List 8388608
+        //600: Array 16777216, List 8388608
+        //700: Array 16777216, List 8388608
+    }
 
 }
