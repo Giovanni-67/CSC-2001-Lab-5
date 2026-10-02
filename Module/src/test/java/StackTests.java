@@ -1,4 +1,8 @@
-class main() {
+import org.junit.jupiter.api.Test;
+import java.util.NoSuchElementException;
+import static org.junit.jupiter.api.Assertions.*;
+
+class main {
     /*Along with your standard testing, let’s do some timing. Here’s a short piece of Java code that measures the time it takes to run a function ‘f‘:
 
     long startTime = System.nanoTime();
@@ -20,16 +24,133 @@ class main() {
     You may notice some "jitter"; running the function twice with the same input may produce different outputs.
 
     Plot your outputs by hand on a piece of paper, with ‘pushes and pops‘ on the x axis and seconds on the y axis. Does it look linear?*/
+    public void timingArrayNumbers(int t){
+        int n = 1;
+        while(true){
+            AStack timedList = AStack.emptyStack();
+            long startTime = System.nanoTime();
 
-    public int timingNumbers(int t, int n){
-        LLStack timedList = LLStack.emptyStack();
-        for(int i = 0; i < n; i++){
-            timedList.push("test");
-        }
-        for(int i = 0; i < n; i++){
-            timedList.pop();
-        }
-        AStack timedList2 = AStack.emptyStack();
+            for(int i = 0; i < n; i++){
+                timedList.push("test");
+            }
+            for(int i = 0; i < n; i++){
+                timedList.pop();
+            }
 
+            long endTime = System.nanoTime();
+            long duration = ((endTime - startTime) / 1000000);  //divide by 1000000 to get milliseconds.
+            System.out.println("calling array f took "+duration+" milliseconds.\n");
+
+            if(duration > t){
+                System.out.println(n/2);
+                break;
+            }
+            else{
+                n *= 2;
+            }
+        }
     }
+
+
+    public void timingLListNumbers(int t){
+        int n = 1;
+        while(true){
+            LLStack timedList = LLStack.emptyStack();
+            long startTime = System.nanoTime();
+
+            for(int i = 0; i < n; i++){
+                timedList.push("test");
+            }
+            for(int i = 0; i < n; i++){
+                timedList.pop();
+            }
+
+            long endTime = System.nanoTime();
+            long duration = ((endTime - startTime) / 1000000);  //divide by 1000000 to get milliseconds.
+            System.out.println("calling linkedlist f took "+duration+" milliseconds.\n");
+
+            if(duration > t){
+                System.out.println(n/2);
+                break;
+            }
+            else{
+                n *= 2;
+            }
+        }
+    }
+
+    @Test
+    void testSize() {
+        AStack first = AStack.emptyStack();
+        LLStack second = LLStack.emptyStack();
+
+        assertEquals(0, first.size());
+        assertEquals(0, second.size());
+
+        first.push("Hello");
+        second.push("Hello");
+
+        assertEquals(1, first.size());
+        assertEquals(1, second.size());
+    }
+
+    @Test
+    void testIsEmpty(){
+        AStack first = AStack.emptyStack();
+        LLStack second = LLStack.emptyStack();
+
+        assertTrue(first.is_empty());
+        assertTrue(second.is_empty());
+
+        first.push("Hello");
+        second.push("Hello");
+
+        assertFalse(first.is_empty());
+        assertFalse(second.is_empty());
+    }
+
+    @Test
+    void testPush(){
+        AStack first = AStack.emptyStack();
+        LLStack second = LLStack.emptyStack();
+
+        first.push("Hello");
+        second.push("Hello");
+
+        assertEquals(1, first.size());
+        assertEquals(1, second.size());
+
+        assertFalse(first.is_empty());
+        assertFalse(second.is_empty());
+    }
+
+    @Test
+    void testPeek(){
+        AStack first = AStack.emptyStack();
+        LLStack second = LLStack.emptyStack();
+
+        first.push("Hello");
+        second.push("Hello");
+        first.push("World");
+        second.push("World");
+
+        assertEquals(first.peek(), "World");
+        assertEquals(second.peek(), "World");
+    }
+
+    @Test
+    void testPop(){
+        AStack first = AStack.emptyStack();
+        LLStack second = LLStack.emptyStack();
+
+        first.push("Hello");
+        second.push("Hello");
+        first.push("World");
+        second.push("World");
+
+        assertEquals(first.pop(), "World");
+        assertEquals(second.pop(), "World");
+    }
+
+
 }
