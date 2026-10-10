@@ -11,6 +11,7 @@ public class AQueue {
         back = 0;
     }
 
+    //Create an empty queue
     public static AQueue emptyQueue(int arraySize) {
         if(arraySize <= 0){
             throw new IllegalArgumentException("Array size must be greater than zero");
